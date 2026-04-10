@@ -2,7 +2,7 @@
 
 ## Overview
 
-pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+pnpm workspace monorepo using TypeScript. Contains the Merchant Operating System (MOS) SaaS dashboard.
 
 ## Stack
 
@@ -15,6 +15,32 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **Validation**: Zod (`zod/v4`), `drizzle-zod`
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
+
+## Artifacts
+
+### MOS Dashboard (`artifacts/mos-dashboard`)
+
+A full SaaS dashboard called "Merchant Operating System (MOS)".
+
+**Tech**: React + Vite, Tailwind CSS, wouter, Recharts, Framer Motion
+
+**Features**:
+- Arabic-first UI (RTL) with AR/EN language toggle
+- Dark mode toggle
+- Cairo Arabic font
+- 9 pages: Dashboard, Orders, Products, Customers, Inbox, Analytics, Shipping, Returns, Team
+- Mock data only (no backend)
+- i18n via JSON translation files
+
+**Key files**:
+- `src/i18n/ar.json` / `src/i18n/en.json` — translations
+- `src/i18n/LanguageContext.tsx` — language context + RTL control
+- `src/i18n/useTranslation.ts` — translation hook
+- `src/data/mockData.ts` — all mock data
+- `src/components/Layout.tsx` — sidebar + navbar layout
+- `src/components/ThemeProvider.tsx` — dark mode provider
+- `src/components/StatusBadge.tsx` — status badge component
+- `src/pages/` — all 9 dashboard pages
 
 ## Key Commands
 

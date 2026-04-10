@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Merchant Operating System (MOS)"
+version = "1.0.0"
+id = "artifacts/mos-dashboard"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24353
+
+[services.development]
+run = "pnpm --filter @workspace/mos-dashboard run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mos-dashboard", "run", "build" ]
+publicDir = "artifacts/mos-dashboard/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24353"
+BASE_PATH = "/"
