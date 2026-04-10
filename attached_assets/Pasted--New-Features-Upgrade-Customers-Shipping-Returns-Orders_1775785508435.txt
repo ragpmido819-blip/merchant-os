@@ -1,0 +1,200 @@
+🚨 **New Features Upgrade (Customers, Shipping, Returns, Orders + Linking)**
+
+Please implement the following upgrades as **interactive features (not static UI)** with clean UX and mock data.
+
+---
+
+# 👥 Customers Page (Upgrade)
+
+## 1. Customer Profile (Important)
+
+* Click customer → open profile page/drawer
+* Show:
+
+  * Orders list
+  * Total spending
+  * Returns
+  * Last activity
+
+---
+
+## 2. Segmentation
+
+Add tags:
+
+* VIP
+* New
+* Inactive
+
+---
+
+## 3. New Columns
+
+* Total Spending 💰
+* Returns Count
+* Status (Active / Risk / VIP)
+
+---
+
+## 4. Actions
+
+* View Details
+* Create Order
+* Send WhatsApp
+* Block Customer
+
+---
+
+## 5. Filters
+
+* By city
+* By spending
+* By activity
+
+---
+
+# 🚚 Shipping Page (Upgrade)
+
+## 1. Status System
+
+* Pending
+* Picked Up
+* In Transit
+* Out for Delivery
+* Delivered
+* Failed
+
+---
+
+## 2. New Columns
+
+* Shipping Date
+* Estimated Delivery
+* City
+* Cost
+
+---
+
+## 3. Actions
+
+* Update Status
+* Open Tracking Link
+* Reschedule
+* Cancel Shipment
+
+---
+
+## 4. Integration (Mock)
+
+* Simulate API:
+
+  * Aramex
+  * SMSA
+* Auto status updates (fake)
+
+---
+
+## 5. Alerts
+
+* Late shipments
+* Failed delivery
+
+---
+
+# 📦 Returns Page (Upgrade)
+
+## 1. Return Type
+
+* Refund
+* Replacement
+
+---
+
+## 2. New Columns
+
+* Return Amount
+* Refund Method (Wallet / Bank)
+* Inspection Status
+
+---
+
+## 3. Workflow
+
+* Pending
+* Approved
+* Picked Up
+* Inspected
+* Refunded / Replaced
+
+---
+
+## 4. Product Images
+
+* Upload images (mock preview)
+
+---
+
+## 5. Linking
+
+* View Order button
+* View Customer button
+
+---
+
+# 🧾 Orders Page (Quick Upgrade)
+
+## 1. Order Timeline
+
+* Created → Paid → Shipped → Delivered
+* Show as progress bar
+
+---
+
+## 2. Order Details Drawer
+
+* Open as side panel (not new page)
+* Show:
+
+  * Products
+  * Address
+  * Payment
+
+---
+
+# 🔗 Global Linking (Critical)
+
+Make system fully connected:
+
+## From Orders:
+
+* Go to Customer
+* Go to Shipment
+* Go to Return
+
+## From Customers:
+
+* View all Orders
+* View all Returns
+
+## From Shipping:
+
+* Go to Order
+
+## From Returns:
+
+* Go to Order + Customer
+
+---
+
+# 🎯 Requirements:
+
+* Use mock data
+* Fully clickable
+* Use state (useState or store)
+* Show loading + toasts
+* Clean RTL UI
+
+---
+
+✅ Goal:
+Transform the system from tables into a **connected SaaS operating system**
