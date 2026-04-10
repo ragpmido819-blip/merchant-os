@@ -15,6 +15,8 @@ import Analytics from "@/pages/Analytics";
 import Shipping from "@/pages/Shipping";
 import Returns from "@/pages/Returns";
 import Team from "@/pages/Team";
+import Growth from "@/pages/Growth";
+import Settings from "@/pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,8 @@ function Router() {
         <Route path="/shipping" component={Shipping} />
         <Route path="/returns" component={Returns} />
         <Route path="/team" component={Team} />
+        <Route path="/growth" component={Growth} />
+        <Route path="/settings" component={Settings} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

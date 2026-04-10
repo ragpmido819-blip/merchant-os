@@ -1,0 +1,154 @@
+🚨 **New Features – Advanced Implementation (High Priority)**
+
+Please implement the following as **fully interactive product-level features**, not just static UI.
+
+---
+
+# 6) Growth 🔥 (النمو)
+
+Create this as a **powerful growth tools module** similar to modern funnel builders.
+
+## Tabs:
+
+* Funnels (مسارات التحويل)
+* Retargeting (إعادة الاستهداف)
+* Affiliates (الشركاء)
+
+---
+
+## 🎯 Funnels Builder (Advanced)
+
+### Main Experience:
+
+* Drag & Drop Canvas (use dnd-kit or similar)
+* Sections should be draggable, reorderable, and removable
+
+### Sections:
+
+* Hero
+* Product
+* Testimonials
+* CTA
+
+### Behavior:
+
+* Clicking a section selects it
+* Selected section opens **Right Editing Panel**
+
+### Right Panel:
+
+* Edit text content (inline or inputs)
+* Replace images
+* Basic styling (alignment, colors optional)
+
+### Top Bar:
+
+* Publish Button
+* Show "Last saved" state
+* Fake saving/loading state
+
+### UX Details:
+
+* Highlight selected block
+* Smooth animations when dragging
+* Empty state ("ابدأ ببناء المسار")
+
+---
+
+## 🔁 Retargeting (Interactive)
+
+### Campaign List:
+
+* Show list of campaigns (mock data)
+* Status badges (Active / Draft)
+
+### Create Campaign Modal/Page:
+
+* Audience:
+
+  * Abandoned Cart
+  * Old Customers
+* Channel:
+
+  * SMS
+  * WhatsApp
+* Message Input (textarea)
+
+### Behavior:
+
+* Create button adds campaign to list
+* Show success toast (fake)
+
+---
+
+## 🤝 Affiliates (System Feel)
+
+### Features:
+
+* Affiliates List (name + commission + link)
+* Generate Referral Link Button
+
+### Behavior:
+
+* Clicking generate creates fake unique link
+* Copy-to-clipboard button
+* Editable commission %
+
+---
+
+# 11) Settings (الإعدادات)
+
+## Sections:
+
+* General
+* Payment
+* Shipping
+
+---
+
+## 🔥 Channels Integration (Important UX)
+
+Create this as a **connected accounts panel**
+
+### Channels:
+
+* Instagram
+* TikTok
+* Facebook
+* WhatsApp
+
+### UI Behavior:
+
+* Each channel has:
+
+  * Connect Button
+  * Status (Connected / Not Connected)
+
+### Interaction:
+
+* Clicking "Connect" → simulate OAuth (fake loading → connected state)
+* Show connected badge
+* Allow disconnect
+
+---
+
+# 🎯 Global UX Requirements:
+
+* Fully clickable system (no dead UI)
+* Use mock state management (useState or store)
+* Show loading states & skeletons
+* Use toasts for feedback (success / error)
+* Maintain RTL Arabic layout
+* Clean, modern SaaS feel
+
+---
+
+# ⚠️ Important:
+
+This is NOT static UI.
+Everything should feel like a real working product using mock data and interactions.
+
+---
+
+✅ Goal:
+Make the Growth & Settings modules feel like real SaaS features ready for production.

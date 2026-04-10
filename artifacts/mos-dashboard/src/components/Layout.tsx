@@ -10,6 +10,8 @@ import {
   Truck,
   RotateCcw,
   UserCog,
+  TrendingUp,
+  Settings,
   Sun,
   Moon,
   Menu,
@@ -33,6 +35,8 @@ const navItems = [
   { key: 'nav.shipping', icon: Truck, path: '/shipping' },
   { key: 'nav.returns', icon: RotateCcw, path: '/returns' },
   { key: 'nav.team', icon: UserCog, path: '/team' },
+  { key: 'nav.growth', icon: TrendingUp, path: '/growth' },
+  { key: 'nav.settings', icon: Settings, path: '/settings' },
 ] as const;
 
 interface LayoutProps {
