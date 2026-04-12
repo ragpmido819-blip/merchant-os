@@ -39,15 +39,36 @@ export interface Order {
   items: OrderItem[];
 }
 
+export interface ProductVariant {
+  id: string;
+  sku: string;
+  size?: string;
+  color?: string;
+  material?: string;
+  customLabel?: string;
+  priceOverride?: number;
+  stock: number;
+  active: boolean;
+}
+
 export interface Product {
   id: string;
   name: string;
   nameEn: string;
+  description: string;
+  descriptionEn: string;
+  sku: string;
   price: number;
+  discountPrice?: number;
   stock: number;
+  stockAlertThreshold: number;
   status: 'active' | 'inactive';
   category: string;
   color: string;
+  createdDate: string;
+  views: number;
+  sales: number;
+  variants?: ProductVariant[];
 }
 
 export interface Customer {
@@ -183,18 +204,93 @@ export const orders: Order[] = [
 ];
 
 export const products: Product[] = [
-  { id: 'P001', name: 'قميص قطني أبيض', nameEn: 'White Cotton Shirt', price: 149, stock: 85, status: 'active', category: 'ملابس', color: 'from-blue-400 to-blue-600' },
-  { id: 'P002', name: 'حذاء جلدي بني', nameEn: 'Brown Leather Shoes', price: 399, stock: 32, status: 'active', category: 'أحذية', color: 'from-amber-700 to-amber-900' },
-  { id: 'P003', name: 'ساعة ذكية سوداء', nameEn: 'Black Smartwatch', price: 1299, stock: 18, status: 'active', category: 'إلكترونيات', color: 'from-gray-700 to-gray-900' },
-  { id: 'P004', name: 'حقيبة يد نسائية', nameEn: "Women's Handbag", price: 549, stock: 0, status: 'inactive', category: 'حقائب', color: 'from-pink-400 to-rose-600' },
-  { id: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', price: 899, stock: 45, status: 'active', category: 'عطور', color: 'from-purple-500 to-indigo-700' },
-  { id: 'P006', name: 'نظارة شمسية', nameEn: 'Sunglasses', price: 249, stock: 67, status: 'active', category: 'إكسسوارات', color: 'from-emerald-500 to-teal-700' },
-  { id: 'P007', name: 'بنطلون جينز أزرق', nameEn: 'Blue Jeans', price: 199, stock: 120, status: 'active', category: 'ملابس', color: 'from-blue-600 to-blue-900' },
-  { id: 'P008', name: 'كريم ترطيب', nameEn: 'Moisturizing Cream', price: 89, stock: 200, status: 'active', category: 'عناية', color: 'from-orange-300 to-orange-500' },
-  { id: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', price: 749, stock: 28, status: 'active', category: 'إلكترونيات', color: 'from-slate-500 to-slate-700' },
-  { id: 'P010', name: 'حزام جلدي', nameEn: 'Leather Belt', price: 129, stock: 55, status: 'active', category: 'إكسسوارات', color: 'from-amber-800 to-amber-950' },
-  { id: 'P011', name: 'قفازات رياضية', nameEn: 'Sports Gloves', price: 79, stock: 0, status: 'inactive', category: 'رياضة', color: 'from-red-500 to-red-700' },
-  { id: 'P012', name: 'شال كشمير', nameEn: 'Cashmere Shawl', price: 329, stock: 40, status: 'active', category: 'ملابس', color: 'from-stone-400 to-stone-600' },
+  {
+    id: 'P001', name: 'قميص قطني أبيض', nameEn: 'White Cotton Shirt', sku: 'SKU-CLT-001', description: 'قميص قطني ناعم مناسب للاستخدام اليومي', descriptionEn: 'Soft cotton shirt suitable for everyday wear', price: 149, stock: 85, stockAlertThreshold: 10, status: 'active', category: 'ملابس', color: 'from-blue-400 to-blue-600', createdDate: '2025-12-01', views: 1240, sales: 67,
+    variants: [
+      { id: 'V001-S-W', sku: 'SKU-CLT-001-S-W', size: 'S', color: 'أبيض', stock: 25, active: true },
+      { id: 'V001-M-W', sku: 'SKU-CLT-001-M-W', size: 'M', color: 'أبيض', stock: 30, active: true },
+      { id: 'V001-L-W', sku: 'SKU-CLT-001-L-W', size: 'L', color: 'أبيض', stock: 20, active: true },
+      { id: 'V001-XL-W', sku: 'SKU-CLT-001-XL-W', size: 'XL', color: 'أبيض', stock: 10, active: true },
+      { id: 'V001-M-B', sku: 'SKU-CLT-001-M-B', size: 'M', color: 'أسود', stock: 0, active: false },
+    ],
+  },
+  {
+    id: 'P002', name: 'حذاء جلدي بني', nameEn: 'Brown Leather Shoes', sku: 'SKU-SHO-002', description: 'حذاء جلد طبيعي بتصميم كلاسيكي أنيق', descriptionEn: 'Genuine leather shoes with an elegant classic design', price: 399, stock: 32, stockAlertThreshold: 5, status: 'active', category: 'أحذية', color: 'from-amber-700 to-amber-900', createdDate: '2025-11-15', views: 980, sales: 41,
+    variants: [
+      { id: 'V002-40', sku: 'SKU-SHO-002-40', size: '40', stock: 8, active: true },
+      { id: 'V002-41', sku: 'SKU-SHO-002-41', size: '41', stock: 10, active: true },
+      { id: 'V002-42', sku: 'SKU-SHO-002-42', size: '42', stock: 9, active: true },
+      { id: 'V002-43', sku: 'SKU-SHO-002-43', size: '43', stock: 5, active: true },
+      { id: 'V002-44', sku: 'SKU-SHO-002-44', size: '44', stock: 0, active: false },
+    ],
+  },
+  {
+    id: 'P003', name: 'ساعة ذكية سوداء', nameEn: 'Black Smartwatch', sku: 'SKU-ELC-003', description: 'ساعة ذكية متطورة مع متابعة الصحة واللياقة', descriptionEn: 'Advanced smartwatch with health and fitness tracking', price: 1299, discountPrice: 999, stock: 18, stockAlertThreshold: 5, status: 'active', category: 'إلكترونيات', color: 'from-gray-700 to-gray-900', createdDate: '2026-01-10', views: 3200, sales: 28,
+    variants: [
+      { id: 'V003-BLK', sku: 'SKU-ELC-003-BLK', color: 'أسود', stock: 10, active: true },
+      { id: 'V003-SLV', sku: 'SKU-ELC-003-SLV', color: 'فضي', stock: 5, active: true },
+      { id: 'V003-GLD', sku: 'SKU-ELC-003-GLD', color: 'ذهبي', priceOverride: 1399, stock: 3, active: true },
+    ],
+  },
+  {
+    id: 'P004', name: 'حقيبة يد نسائية', nameEn: "Women's Handbag", sku: 'SKU-BAG-004', description: 'حقيبة يد نسائية فاخرة بألوان متعددة', descriptionEn: 'Luxury women handbag in multiple colors', price: 549, stock: 0, stockAlertThreshold: 3, status: 'inactive', category: 'حقائب', color: 'from-pink-400 to-rose-600', createdDate: '2025-10-05', views: 560, sales: 12,
+  },
+  {
+    id: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', sku: 'SKU-PRF-005', description: 'عطر رجالي فاخر بنفحات خشبية ومسكية', descriptionEn: 'Luxury men perfume with woody and musky notes', price: 899, stock: 45, stockAlertThreshold: 8, status: 'active', category: 'عطور', color: 'from-purple-500 to-indigo-700', createdDate: '2025-09-20', views: 2100, sales: 89,
+    variants: [
+      { id: 'V005-50', sku: 'SKU-PRF-005-50', customLabel: '50ml', stock: 20, active: true },
+      { id: 'V005-100', sku: 'SKU-PRF-005-100', customLabel: '100ml', stock: 18, active: true },
+      { id: 'V005-200', sku: 'SKU-PRF-005-200', customLabel: '200ml', priceOverride: 1499, stock: 7, active: true },
+    ],
+  },
+  {
+    id: 'P006', name: 'نظارة شمسية', nameEn: 'Sunglasses', sku: 'SKU-ACC-006', description: 'نظارة شمسية بحماية UV400 وإطارات عصرية', descriptionEn: 'Sunglasses with UV400 protection and modern frames', price: 249, stock: 67, stockAlertThreshold: 10, status: 'active', category: 'إكسسوارات', color: 'from-emerald-500 to-teal-700', createdDate: '2026-02-01', views: 890, sales: 55,
+    variants: [
+      { id: 'V006-BLK', sku: 'SKU-ACC-006-BLK', color: 'أسود', stock: 30, active: true },
+      { id: 'V006-BRN', sku: 'SKU-ACC-006-BRN', color: 'بني', stock: 22, active: true },
+      { id: 'V006-GRY', sku: 'SKU-ACC-006-GRY', color: 'رمادي', stock: 15, active: true },
+    ],
+  },
+  {
+    id: 'P007', name: 'بنطلون جينز أزرق', nameEn: 'Blue Jeans', sku: 'SKU-CLT-007', description: 'بنطلون جينز أصيل بقصة مستقيمة مريحة', descriptionEn: 'Authentic jeans with a comfortable straight cut', price: 199, stock: 120, stockAlertThreshold: 15, status: 'active', category: 'ملابس', color: 'from-blue-600 to-blue-900', createdDate: '2025-11-01', views: 1650, sales: 134,
+    variants: [
+      { id: 'V007-28-BL', sku: 'SKU-CLT-007-28-BL', size: '28', color: 'أزرق', stock: 25, active: true },
+      { id: 'V007-30-BL', sku: 'SKU-CLT-007-30-BL', size: '30', color: 'أزرق', stock: 30, active: true },
+      { id: 'V007-32-BL', sku: 'SKU-CLT-007-32-BL', size: '32', color: 'أزرق', stock: 28, active: true },
+      { id: 'V007-30-BK', sku: 'SKU-CLT-007-30-BK', size: '30', color: 'أسود', stock: 20, active: true },
+      { id: 'V007-32-BK', sku: 'SKU-CLT-007-32-BK', size: '32', color: 'أسود', stock: 17, active: true },
+    ],
+  },
+  {
+    id: 'P008', name: 'كريم ترطيب', nameEn: 'Moisturizing Cream', sku: 'SKU-CRE-008', description: 'كريم ترطيب مكثف مناسب لجميع أنواع البشرة', descriptionEn: 'Intensive moisturizing cream suitable for all skin types', price: 89, stock: 200, stockAlertThreshold: 20, status: 'active', category: 'عناية', color: 'from-orange-300 to-orange-500', createdDate: '2026-01-05', views: 720, sales: 210,
+  },
+  {
+    id: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', sku: 'SKU-ELC-009', description: 'سماعات لاسلكية بجودة صوت استثنائية وعمر بطارية طويل', descriptionEn: 'Wireless headphones with exceptional sound quality and long battery life', price: 749, stock: 28, stockAlertThreshold: 5, status: 'active', category: 'إلكترونيات', color: 'from-slate-500 to-slate-700', createdDate: '2026-02-14', views: 2450, sales: 37,
+    variants: [
+      { id: 'V009-BLK', sku: 'SKU-ELC-009-BLK', color: 'أسود', stock: 15, active: true },
+      { id: 'V009-WHT', sku: 'SKU-ELC-009-WHT', color: 'أبيض', stock: 8, active: true },
+      { id: 'V009-RED', sku: 'SKU-ELC-009-RED', color: 'أحمر', stock: 5, active: true },
+    ],
+  },
+  {
+    id: 'P010', name: 'حزام جلدي', nameEn: 'Leather Belt', sku: 'SKU-ACC-010', description: 'حزام جلد طبيعي بأحجام متعددة', descriptionEn: 'Genuine leather belt in multiple sizes', price: 129, stock: 55, stockAlertThreshold: 8, status: 'active', category: 'إكسسوارات', color: 'from-amber-800 to-amber-950', createdDate: '2025-12-20', views: 410, sales: 44,
+    variants: [
+      { id: 'V010-S', sku: 'SKU-ACC-010-S', size: 'S', stock: 18, active: true },
+      { id: 'V010-M', sku: 'SKU-ACC-010-M', size: 'M', stock: 22, active: true },
+      { id: 'V010-L', sku: 'SKU-ACC-010-L', size: 'L', stock: 15, active: true },
+    ],
+  },
+  {
+    id: 'P011', name: 'قفازات رياضية', nameEn: 'Sports Gloves', sku: 'SKU-SPT-011', description: 'قفازات رياضية بمواد مقاومة للتآكل', descriptionEn: 'Sports gloves with wear-resistant materials', price: 79, stock: 0, stockAlertThreshold: 5, status: 'inactive', category: 'رياضة', color: 'from-red-500 to-red-700', createdDate: '2025-08-10', views: 230, sales: 18,
+  },
+  {
+    id: 'P012', name: 'شال كشمير', nameEn: 'Cashmere Shawl', sku: 'SKU-CLT-012', description: 'شال كشمير فاخر بألوان أنيقة للشتاء', descriptionEn: 'Luxury cashmere shawl in elegant colors for winter', price: 329, stock: 40, stockAlertThreshold: 5, status: 'active', category: 'ملابس', color: 'from-stone-400 to-stone-600', createdDate: '2026-03-01', views: 640, sales: 29,
+    variants: [
+      { id: 'V012-BGE', sku: 'SKU-CLT-012-BGE', color: 'بيج', stock: 15, active: true },
+      { id: 'V012-GRY', sku: 'SKU-CLT-012-GRY', color: 'رمادي', stock: 14, active: true },
+      { id: 'V012-NVY', sku: 'SKU-CLT-012-NVY', color: 'كحلي', stock: 11, active: true },
+    ],
+  },
 ];
 
 export const customers: Customer[] = [

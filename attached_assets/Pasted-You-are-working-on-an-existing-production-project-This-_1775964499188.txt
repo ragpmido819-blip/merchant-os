@@ -1,0 +1,139 @@
+You are working on an existing production project.
+This is NOT a new project. DO NOT refactor or rebuild anything.
+
+Your task is to **extend the existing Products Management system** safely.
+
+IMPORTANT RULES (MUST FOLLOW):
+
+* Do NOT change existing architecture
+* Do NOT rename existing variables, files, or components
+* Do NOT remove or break current functionality
+* Do NOT change current UI structure or styling system
+* Only extend existing features
+* All changes must be backward compatible
+
+---
+
+## GOAL: Enhance Products Page & Product Management
+
+1. Products Table Enhancements
+   Extend the current products table by adding:
+
+* Product image (thumbnail)
+* Category
+* Product status (Available / Out of Stock)
+* Created date
+* Quick stock status indicator (In Stock / Low Stock / Out)
+
+Keep existing layout, components, and table structure.
+
+---
+
+2. Product Variants (IMPORTANT)
+   Add support for product variants without breaking existing products.
+
+Each product can have multiple variants based on:
+
+* Size (S, M, L, XL, etc.)
+* Color
+* Material
+* Any custom option (dynamic attributes)
+
+Each variant must support:
+
+* Separate SKU
+* Separate price (optional override)
+* Separate stock quantity
+* Optional image per variant
+
+Variants should:
+
+* Belong to the main product
+* Be manageable from the product details page
+* Not break products that do not have variants
+
+---
+
+3. Product Actions
+   Add the following actions per product row:
+
+* Edit
+* Delete
+* View Details
+* Quick stock update
+
+Use existing button styles and patterns.
+
+---
+
+4. Filters & Search
+   Add filters above the products table:
+
+* Search by product name or SKU
+* Filter by category
+* Filter by availability (In stock / Out of stock)
+* Filter by price range
+* Filter by product status
+
+---
+
+5. Add / Edit Product Enhancements
+   Extend the existing add/edit product form:
+
+* Product image upload
+* Product description
+* SKU
+* Base price
+* Discount price (optional)
+* Stock alert threshold (e.g., alert when stock < 5)
+* Enable / Disable product
+
+---
+
+6. Variant Management UI
+   Inside product details:
+
+* Ability to add / edit / delete variants
+* Define attributes (Size, Color, etc.)
+* Set stock and price per variant
+* Toggle variant active / inactive
+
+---
+
+7. Smart Inventory Alerts
+   Add notifications:
+
+* Low stock warning
+* Out of stock warning
+* Fast selling product alert
+
+Keep notifications subtle (toast or badge).
+
+---
+
+8. UI & UX Enhancements
+
+* Use colors to indicate stock status:
+  Green = Available
+  Yellow = Low stock
+  Red = Out of stock
+* Keep responsive design
+* Use pagination for products list
+
+---
+
+9. Advanced (Non-Breaking)
+
+* Product performance stats (views / sales)
+* Best-selling products indicator
+* Optional integration hooks (do not implement yet, just prepare structure)
+
+---
+
+## STRICT RULES
+
+* Do NOT refactor existing code
+* Do NOT redesign UI
+* Do NOT remove existing features
+* Only extend functionality
+* Return ONLY the updated code parts
