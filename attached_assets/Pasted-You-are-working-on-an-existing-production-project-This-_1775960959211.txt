@@ -1,0 +1,128 @@
+You are working on an existing production project.
+This is NOT a new project. DO NOT refactor, redesign, or restructure anything.
+
+Your task is to **extend the existing Orders system** safely.
+
+IMPORTANT RULES (MUST FOLLOW):
+
+* Do NOT change existing architecture
+* Do NOT rename variables, files, or components
+* Do NOT remove existing logic or features
+* Do NOT change UI layout or styling system
+* Reuse all existing components, styles, and logic
+* Only add new functionality on top of the existing system
+* Ensure all changes are backward compatible
+
+---
+
+## GOAL: Enhance the existing Orders Page and Order Details functionality
+
+1. Order Row Interaction
+
+* Do NOT rely on clicking progress percentage
+* Add a clear "View" button per row OR make the whole row clickable
+* If current behavior exists elsewhere, keep it working
+
+2. Orders Table Enhancements
+   Add the following columns WITHOUT changing layout structure:
+
+* Customer phone number
+* Shipping method
+* Payment status (Paid / Unpaid)
+* Order priority (Normal / Urgent)
+
+Keep same table style, spacing, and existing components.
+
+3. Status Display Improvement
+   Replace plain text order status with colored badges using existing badge components:
+
+* New → Yellow
+* Confirmed → Blue
+* Shipped → Purple
+* Delivered → Green
+* Cancelled → Red
+
+4. Progress Display
+
+* Replace percentage with a lightweight progress bar
+* Show steps visually:
+  New → Confirmed → Shipped → Delivered
+* Keep minimal and consistent with current UI
+
+5. Order Details Page Enhancements
+   Extend the current page ONLY:
+
+a) Status Control
+
+* Add dropdown or stepper to update order status easily
+
+b) Products Section
+
+* Show product thumbnail image
+* Display SKU
+* Allow quick quantity edit (do not break existing logic)
+
+c) Address Section
+
+* Add "Open in Google Maps" button
+* Add "Copy Address" button
+
+d) Payment Section
+
+* Show payment status (Paid / Unpaid)
+* Show payment method (Cash / Online)
+
+e) Quick Links
+Add buttons:
+
+* View Customer
+* Track Shipment
+* Returns
+
+6. Quick Actions in Orders Table
+   Add action buttons per row using existing button styles:
+
+* Confirm Order
+* Mark as Shipped
+* Cancel Order
+
+7. Filters & Search
+   Add filters above the table:
+
+* Filter by Status
+* Date range
+* Price range
+* Customer
+* Search by Order ID or Customer name
+
+8. Smart Notifications
+   Add subtle notifications (toast or badge):
+
+* New order created
+* Shipping delay detected
+* Order cancelled
+
+9. Advanced UX Improvements
+   Inside Order Details page:
+
+* Add order timeline:
+  Created → Confirmed → Shipped → Delivered
+* Add:
+
+  * Print Invoice
+  * Download PDF
+  * WhatsApp contact button (open chat using customer phone)
+  * Internal admin notes section
+
+---
+
+## STRICT RULES
+
+* Do NOT remove existing features
+* Do NOT break current functionality
+* Do NOT redesign UI
+* Only extend functionality
+* Use existing components and styles
+* Code must be production-safe
+
+Return ONLY updated code sections. Do not rewrite entire files unless necessary.

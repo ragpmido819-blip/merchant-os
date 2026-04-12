@@ -1,4 +1,7 @@
 export type OrderStatus = 'new' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled';
+export type PaymentStatus = 'paid' | 'unpaid';
+export type OrderPriority = 'normal' | 'urgent';
+export type ShippingMethod = 'standard' | 'express' | 'sameday';
 export type ShipmentStatus = 'pending' | 'pickedUp' | 'inTransit' | 'outForDelivery' | 'delivered' | 'failed';
 export type ReturnStatus = 'pending' | 'approved' | 'pickedUp' | 'inspected' | 'refunded' | 'replaced' | 'rejected';
 export type ReturnType = 'refund' | 'replacement';
@@ -12,6 +15,7 @@ export interface OrderItem {
   productId: string;
   name: string;
   nameEn: string;
+  sku: string;
   qty: number;
   price: number;
 }
@@ -20,12 +24,16 @@ export interface Order {
   id: string;
   customer: string;
   customerId: string;
+  phone: string;
   status: OrderStatus;
   price: number;
   date: string;
   city: string;
   address: string;
   paymentMethod: string;
+  paymentStatus: PaymentStatus;
+  shippingMethod: ShippingMethod;
+  priority: OrderPriority;
   shipmentId?: string;
   returnId?: string;
   items: OrderItem[];
@@ -113,64 +121,64 @@ export interface TeamMember {
 
 export const orders: Order[] = [
   {
-    id: '#ORD-1001', customer: 'محمد الأحمدي', customerId: 'C001', status: 'delivered', price: 1250, date: '2026-04-09', city: 'الرياض', address: 'حي النرجس، شارع الأمير محمد، الرياض', paymentMethod: 'Mada', shipmentId: 'SH001',
-    items: [{ productId: 'P001', name: 'قميص قطني أبيض', nameEn: 'White Cotton Shirt', qty: 2, price: 149 }, { productId: 'P006', name: 'نظارة شمسية', nameEn: 'Sunglasses', qty: 1, price: 249 }],
+    id: '#ORD-1001', customer: 'محمد الأحمدي', customerId: 'C001', phone: '+966501234567', status: 'delivered', price: 1250, date: '2026-04-09', city: 'الرياض', address: 'حي النرجس، شارع الأمير محمد، الرياض', paymentMethod: 'Mada', paymentStatus: 'paid', shippingMethod: 'standard', priority: 'normal', shipmentId: 'SH001',
+    items: [{ productId: 'P001', name: 'قميص قطني أبيض', nameEn: 'White Cotton Shirt', sku: 'SKU-CLT-001', qty: 2, price: 149 }, { productId: 'P006', name: 'نظارة شمسية', nameEn: 'Sunglasses', sku: 'SKU-ACC-006', qty: 1, price: 249 }],
   },
   {
-    id: '#ORD-1002', customer: 'سارة العتيبي', customerId: 'C002', status: 'shipped', price: 680, date: '2026-04-09', city: 'جدة', address: 'حي الروضة، شارع التحلية، جدة', paymentMethod: 'Visa', shipmentId: 'SH002',
-    items: [{ productId: 'P008', name: 'كريم ترطيب', nameEn: 'Moisturizing Cream', qty: 3, price: 89 }, { productId: 'P010', name: 'حزام جلدي', nameEn: 'Leather Belt', qty: 1, price: 129 }],
+    id: '#ORD-1002', customer: 'سارة العتيبي', customerId: 'C002', phone: '+966502345678', status: 'shipped', price: 680, date: '2026-04-09', city: 'جدة', address: 'حي الروضة، شارع التحلية، جدة', paymentMethod: 'Visa', paymentStatus: 'paid', shippingMethod: 'express', priority: 'normal', shipmentId: 'SH002',
+    items: [{ productId: 'P008', name: 'كريم ترطيب', nameEn: 'Moisturizing Cream', sku: 'SKU-CRE-008', qty: 3, price: 89 }, { productId: 'P010', name: 'حزام جلدي', nameEn: 'Leather Belt', sku: 'SKU-ACC-010', qty: 1, price: 129 }],
   },
   {
-    id: '#ORD-1003', customer: 'عبدالله الغامدي', customerId: 'C003', status: 'confirmed', price: 3200, date: '2026-04-08', city: 'الدمام', address: 'حي الشاطئ، الدمام', paymentMethod: 'Apple Pay', shipmentId: 'SH003',
-    items: [{ productId: 'P003', name: 'ساعة ذكية سوداء', nameEn: 'Black Smartwatch', qty: 1, price: 1299 }, { productId: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', qty: 1, price: 749 }],
+    id: '#ORD-1003', customer: 'عبدالله الغامدي', customerId: 'C003', phone: '+966503456789', status: 'confirmed', price: 3200, date: '2026-04-08', city: 'الدمام', address: 'حي الشاطئ، الدمام', paymentMethod: 'Apple Pay', paymentStatus: 'paid', shippingMethod: 'sameday', priority: 'urgent', shipmentId: 'SH003',
+    items: [{ productId: 'P003', name: 'ساعة ذكية سوداء', nameEn: 'Black Smartwatch', sku: 'SKU-ELC-003', qty: 1, price: 1299 }, { productId: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', sku: 'SKU-ELC-009', qty: 1, price: 749 }],
   },
   {
-    id: '#ORD-1004', customer: 'نورة القحطاني', customerId: 'C004', status: 'new', price: 450, date: '2026-04-08', city: 'مكة المكرمة', address: 'حي العزيزية، مكة المكرمة', paymentMethod: 'COD',
-    items: [{ productId: 'P012', name: 'شال كشمير', nameEn: 'Cashmere Shawl', qty: 1, price: 329 }],
+    id: '#ORD-1004', customer: 'نورة القحطاني', customerId: 'C004', phone: '+966504567890', status: 'new', price: 450, date: '2026-04-08', city: 'مكة المكرمة', address: 'حي العزيزية، مكة المكرمة', paymentMethod: 'COD', paymentStatus: 'unpaid', shippingMethod: 'standard', priority: 'normal',
+    items: [{ productId: 'P012', name: 'شال كشمير', nameEn: 'Cashmere Shawl', sku: 'SKU-CLT-012', qty: 1, price: 329 }],
   },
   {
-    id: '#ORD-1005', customer: 'فيصل الشمري', customerId: 'C005', status: 'cancelled', price: 890, date: '2026-04-08', city: 'المدينة المنورة', address: 'حي الورود، المدينة المنورة', paymentMethod: 'STC Pay',
-    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', qty: 1, price: 899 }],
+    id: '#ORD-1005', customer: 'فيصل الشمري', customerId: 'C005', phone: '+966505678901', status: 'cancelled', price: 890, date: '2026-04-08', city: 'المدينة المنورة', address: 'حي الورود، المدينة المنورة', paymentMethod: 'STC Pay', paymentStatus: 'unpaid', shippingMethod: 'express', priority: 'normal',
+    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', sku: 'SKU-PRF-005', qty: 1, price: 899 }],
   },
   {
-    id: '#ORD-1006', customer: 'رنا السبيعي', customerId: 'C006', status: 'new', price: 2100, date: '2026-04-07', city: 'الرياض', address: 'حي الملقا، الرياض', paymentMethod: 'Visa', shipmentId: 'SH005',
-    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', qty: 1, price: 899 }, { productId: 'P002', name: 'حذاء جلدي بني', nameEn: 'Brown Leather Shoes', qty: 2, price: 399 }],
+    id: '#ORD-1006', customer: 'رنا السبيعي', customerId: 'C006', phone: '+966506789012', status: 'new', price: 2100, date: '2026-04-07', city: 'الرياض', address: 'حي الملقا، الرياض', paymentMethod: 'Visa', paymentStatus: 'paid', shippingMethod: 'express', priority: 'urgent', shipmentId: 'SH005',
+    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', sku: 'SKU-PRF-005', qty: 1, price: 899 }, { productId: 'P002', name: 'حذاء جلدي بني', nameEn: 'Brown Leather Shoes', sku: 'SKU-SHO-002', qty: 2, price: 399 }],
   },
   {
-    id: '#ORD-1007', customer: 'خالد الدوسري', customerId: 'C007', status: 'shipped', price: 560, date: '2026-04-07', city: 'الطائف', address: 'حي الفيصلية، الطائف', paymentMethod: 'Mada', shipmentId: 'SH006',
-    items: [{ productId: 'P007', name: 'بنطلون جينز أزرق', nameEn: 'Blue Jeans', qty: 2, price: 199 }],
+    id: '#ORD-1007', customer: 'خالد الدوسري', customerId: 'C007', phone: '+966507890123', status: 'shipped', price: 560, date: '2026-04-07', city: 'الطائف', address: 'حي الفيصلية، الطائف', paymentMethod: 'Mada', paymentStatus: 'paid', shippingMethod: 'standard', priority: 'normal', shipmentId: 'SH006',
+    items: [{ productId: 'P007', name: 'بنطلون جينز أزرق', nameEn: 'Blue Jeans', sku: 'SKU-CLT-007', qty: 2, price: 199 }],
   },
   {
-    id: '#ORD-1008', customer: 'هدى المالكي', customerId: 'C008', status: 'delivered', price: 1750, date: '2026-04-06', city: 'جدة', address: 'حي الحمراء، جدة', paymentMethod: 'Apple Pay', shipmentId: 'SH007',
-    items: [{ productId: 'P003', name: 'ساعة ذكية سوداء', nameEn: 'Black Smartwatch', qty: 1, price: 1299 }],
+    id: '#ORD-1008', customer: 'هدى المالكي', customerId: 'C008', phone: '+966508901234', status: 'delivered', price: 1750, date: '2026-04-06', city: 'جدة', address: 'حي الحمراء، جدة', paymentMethod: 'Apple Pay', paymentStatus: 'paid', shippingMethod: 'sameday', priority: 'normal', shipmentId: 'SH007',
+    items: [{ productId: 'P003', name: 'ساعة ذكية سوداء', nameEn: 'Black Smartwatch', sku: 'SKU-ELC-003', qty: 1, price: 1299 }],
   },
   {
-    id: '#ORD-1009', customer: 'عمر الزهراني', customerId: 'C009', status: 'confirmed', price: 3900, date: '2026-04-06', city: 'الدمام', address: 'حي العليا، الدمام', paymentMethod: 'Visa',
-    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', qty: 2, price: 899 }, { productId: 'P002', name: 'حذاء جلدي بني', nameEn: 'Brown Leather Shoes', qty: 1, price: 399 }],
+    id: '#ORD-1009', customer: 'عمر الزهراني', customerId: 'C009', phone: '+966509012345', status: 'confirmed', price: 3900, date: '2026-04-06', city: 'الدمام', address: 'حي العليا، الدمام', paymentMethod: 'Visa', paymentStatus: 'paid', shippingMethod: 'express', priority: 'urgent',
+    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', sku: 'SKU-PRF-005', qty: 2, price: 899 }, { productId: 'P002', name: 'حذاء جلدي بني', nameEn: 'Brown Leather Shoes', sku: 'SKU-SHO-002', qty: 1, price: 399 }],
   },
   {
-    id: '#ORD-1010', customer: 'لمى الحربي', customerId: 'C010', status: 'new', price: 720, date: '2026-04-05', city: 'الرياض', address: 'حي السليمانية، الرياض', paymentMethod: 'STC Pay',
-    items: [{ productId: 'P006', name: 'نظارة شمسية', nameEn: 'Sunglasses', qty: 2, price: 249 }],
+    id: '#ORD-1010', customer: 'لمى الحربي', customerId: 'C010', phone: '+966510123456', status: 'new', price: 720, date: '2026-04-05', city: 'الرياض', address: 'حي السليمانية، الرياض', paymentMethod: 'STC Pay', paymentStatus: 'unpaid', shippingMethod: 'standard', priority: 'normal',
+    items: [{ productId: 'P006', name: 'نظارة شمسية', nameEn: 'Sunglasses', sku: 'SKU-ACC-006', qty: 2, price: 249 }],
   },
   {
-    id: '#ORD-1011', customer: 'تركي العنزي', customerId: 'C011', status: 'shipped', price: 1100, date: '2026-04-05', city: 'بريدة', address: 'حي المروج، بريدة', paymentMethod: 'Mada', shipmentId: 'SH008',
-    items: [{ productId: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', qty: 1, price: 749 }],
+    id: '#ORD-1011', customer: 'تركي العنزي', customerId: 'C011', phone: '+966511234567', status: 'shipped', price: 1100, date: '2026-04-05', city: 'بريدة', address: 'حي المروج، بريدة', paymentMethod: 'Mada', paymentStatus: 'paid', shippingMethod: 'standard', priority: 'normal', shipmentId: 'SH008',
+    items: [{ productId: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', sku: 'SKU-ELC-009', qty: 1, price: 749 }],
   },
   {
-    id: '#ORD-1012', customer: 'منيرة الرشيدي', customerId: 'C012', status: 'delivered', price: 280, date: '2026-04-04', city: 'مكة المكرمة', address: 'حي العزيزية، مكة المكرمة', paymentMethod: 'COD',
-    items: [{ productId: 'P008', name: 'كريم ترطيب', nameEn: 'Moisturizing Cream', qty: 1, price: 89 }],
+    id: '#ORD-1012', customer: 'منيرة الرشيدي', customerId: 'C012', phone: '+966512345678', status: 'delivered', price: 280, date: '2026-04-04', city: 'مكة المكرمة', address: 'حي العزيزية، مكة المكرمة', paymentMethod: 'COD', paymentStatus: 'unpaid', shippingMethod: 'standard', priority: 'normal',
+    items: [{ productId: 'P008', name: 'كريم ترطيب', nameEn: 'Moisturizing Cream', sku: 'SKU-CRE-008', qty: 1, price: 89 }],
   },
   {
-    id: '#ORD-1013', customer: 'سلطان الشهري', customerId: 'C012', status: 'confirmed', price: 4500, date: '2026-04-04', city: 'جدة', address: 'حي السلامة، جدة', paymentMethod: 'Visa', shipmentId: 'SH010',
-    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', qty: 3, price: 899 }],
+    id: '#ORD-1013', customer: 'سلطان الشهري', customerId: 'C012', phone: '+966512345678', status: 'confirmed', price: 4500, date: '2026-04-04', city: 'جدة', address: 'حي السلامة، جدة', paymentMethod: 'Visa', paymentStatus: 'paid', shippingMethod: 'express', priority: 'urgent', shipmentId: 'SH010',
+    items: [{ productId: 'P005', name: 'عطر رجالي فاخر', nameEn: 'Luxury Men Perfume', sku: 'SKU-PRF-005', qty: 3, price: 899 }],
   },
   {
-    id: '#ORD-1014', customer: 'غدير الجهني', customerId: 'C010', status: 'cancelled', price: 660, date: '2026-04-03', city: 'الرياض', address: 'حي الياسمين، الرياض', paymentMethod: 'Mada',
-    items: [{ productId: 'P007', name: 'بنطلون جينز أزرق', nameEn: 'Blue Jeans', qty: 2, price: 199 }],
+    id: '#ORD-1014', customer: 'غدير الجهني', customerId: 'C010', phone: '+966510123456', status: 'cancelled', price: 660, date: '2026-04-03', city: 'الرياض', address: 'حي الياسمين، الرياض', paymentMethod: 'Mada', paymentStatus: 'unpaid', shippingMethod: 'standard', priority: 'normal',
+    items: [{ productId: 'P007', name: 'بنطلون جينز أزرق', nameEn: 'Blue Jeans', sku: 'SKU-CLT-007', qty: 2, price: 199 }],
   },
   {
-    id: '#ORD-1015', customer: 'بدر المطيري', customerId: 'C009', status: 'new', price: 1900, date: '2026-04-03', city: 'الدمام', address: 'حي العدامة، الدمام', paymentMethod: 'Apple Pay',
-    items: [{ productId: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', qty: 1, price: 749 }, { productId: 'P001', name: 'قميص قطني أبيض', nameEn: 'White Cotton Shirt', qty: 3, price: 149 }],
+    id: '#ORD-1015', customer: 'بدر المطيري', customerId: 'C009', phone: '+966509012345', status: 'new', price: 1900, date: '2026-04-03', city: 'الدمام', address: 'حي العدامة، الدمام', paymentMethod: 'Apple Pay', paymentStatus: 'paid', shippingMethod: 'express', priority: 'urgent',
+    items: [{ productId: 'P009', name: 'سماعات لاسلكية', nameEn: 'Wireless Headphones', sku: 'SKU-ELC-009', qty: 1, price: 749 }, { productId: 'P001', name: 'قميص قطني أبيض', nameEn: 'White Cotton Shirt', sku: 'SKU-CLT-001', qty: 3, price: 149 }],
   },
 ];
 
