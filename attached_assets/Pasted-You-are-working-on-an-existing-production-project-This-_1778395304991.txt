@@ -1,0 +1,260 @@
+You are working on an existing production project.
+
+This is a LIVE system. DO NOT refactor, redesign, or break anything.
+
+Your task is to **extend the existing Customers Page into a Smart Customer Management System**.
+
+---
+
+## CRITICAL RULES (MUST FOLLOW)
+
+* Do NOT change existing architecture
+* Do NOT rename variables, components, or files
+* Do NOT remove any existing features
+* Do NOT change UI layout structure
+* Reuse existing components and styles
+* All changes must be backward compatible
+* Respect relationships with Orders, Returns, and Shipping systems
+
+Only EXTEND functionality.
+
+---
+
+## GOAL
+
+Upgrade the Customers page from basic CRM → Intelligent CRM
+
+---
+
+1. Customer Scoring System (Core Feature)
+
+---
+
+Add a computed score per customer:
+
+Score Formula:
+Score = (orders_count * 2) + (total_spent / 1000) - (returns_count * 3)
+
+Based on score:
+
+* 20+ → VIP
+* 10–19 → Loyal
+* 0–9 → Normal
+* <0 → Risk
+
+Requirements:
+
+* Do NOT remove existing segmentation
+* Add score as a derived value (not breaking DB)
+* Display score badge next to customer name
+
+---
+
+2. Risk Indicator (Very Important)
+
+---
+
+Add visual warning indicators in table:
+
+* High returns customer
+* Many cancelled orders
+* Inactive customer (no orders for long period)
+
+Display as:
+
+* Warning icon or badge (red / orange)
+
+---
+
+3. Table Enhancements
+
+---
+
+Extend existing table by adding:
+
+* Average Order Value (AOV)
+* Return rate (%)
+* Last order date (make it clearer)
+* Customer score
+
+Keep layout unchanged.
+
+---
+
+4. Customer Insights (Inside Drawer)
+
+---
+
+Extend existing customer details drawer:
+
+Add:
+
+* AOV (Average Order Value)
+* Return rate %
+* Last 3 purchased products
+* Most purchased category
+
+Do NOT remove existing info.
+
+---
+
+5. Activity Timeline
+
+---
+
+Inside customer drawer:
+
+Add timeline:
+
+* Order created
+* Order delivered
+* Return created
+* Order cancelled
+
+Format:
+[DATE] Event description
+
+Keep it lightweight.
+
+---
+
+6. Tabs Inside Customer Drawer
+
+---
+
+Add tabs WITHOUT changing layout:
+
+* Orders
+* Returns
+* Activity
+* Notes
+
+Each tab shows related data using existing components.
+
+---
+
+7. Communication Hub
+
+---
+
+Extend WhatsApp feature:
+
+Add message templates:
+
+* Order confirmation
+* Follow-up
+* Promotion
+
+Click opens WhatsApp with pre-filled message.
+
+---
+
+8. Smart Actions
+
+---
+
+Make actions dynamic:
+
+If VIP:
+
+* Show "Send Offer"
+
+If Risk:
+
+* Show:
+
+  * "Manual Review Required"
+  * "Confirm Before Shipping"
+
+Do NOT remove existing buttons.
+
+---
+
+9. Auto Tags System
+
+---
+
+Add automatic tags:
+
+* High Spender
+* Frequent Buyer
+* Return Risk
+
+Tags should be computed dynamically.
+
+---
+
+10. Notes System
+
+---
+
+Add internal notes per customer:
+
+* Admin can add notes
+* Notes stored and displayed inside drawer
+
+---
+
+11. Blacklist System
+
+---
+
+Add "Block Customer" feature:
+
+* When blocked:
+
+  * Prevent creating new orders
+  * Show warning in Orders page
+
+Do NOT break order creation logic, only add validation.
+
+---
+
+12. System Integration (IMPORTANT)
+
+---
+
+Ensure deep linking:
+
+From customer:
+
+* View all orders (pre-filtered)
+* View shipments
+* View returns
+
+Do NOT break navigation.
+
+---
+
+13. UI Enhancements
+
+---
+
+* Use badges:
+  VIP → Gold
+  Loyal → Blue
+  Normal → Gray
+  Risk → Red
+
+* Keep avatar clickable (opens drawer)
+
+* Maintain responsive design
+
+---
+
+14. Performance Rules
+
+---
+
+* Avoid heavy computations on render
+* Use memoization where needed
+* Keep UI fast and clean
+
+---
+
+## STRICT OUTPUT
+
+* Return ONLY updated code sections
+* Do NOT rewrite full files unless required
+* Do NOT duplicate code
+* Ensure no breaking changes
